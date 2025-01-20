@@ -17,9 +17,9 @@
             </thead>
 
             <tbody>
-                <tr th:each="tempMessage : ${violations}">
-                    <td th:text="${tempMessage.id}" />
-                    <td th:text="${tempMessage.violation}" />
+                <tr th:each="tempViolation : ${violations}">
+                    <td th:text="${tempViolation.violationType}" />
+                    <td th:text="${tempViolation.developerMessage}" />
                 </tr>
             </tbody>
         </table>

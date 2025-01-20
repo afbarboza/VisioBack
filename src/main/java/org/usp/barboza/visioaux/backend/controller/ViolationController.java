@@ -10,11 +10,11 @@ import org.usp.barboza.visioaux.backend.service.ViolationService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/messages")
-public class MessageController {
+@RequestMapping("/violations")
+public class ViolationController {
     private ViolationService violationService;
 
-    public MessageController(ViolationService violationService) {
+    public ViolationController(ViolationService violationService) {
         this.violationService = violationService;
     }
 
@@ -24,9 +24,9 @@ public class MessageController {
         List<Violation> violations = violationService.findAll();
 
         // add to the ui model
-        uiModel.addAttribute("messages", violations);
+        uiModel.addAttribute("violations", violations);
 
         // redirect to the corresponding HTML Thymeleaf template
-        return "message-form";
+        return "violation-form";
     }
 }

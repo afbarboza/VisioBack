@@ -9,11 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class MessageRestController {
+public class ViolationRestController {
     private ViolationService violationService;
 
     @Autowired
-    public MessageRestController(ViolationService violationService) {
+    public ViolationRestController(ViolationService violationService) {
         this.violationService = violationService;
     }
 
