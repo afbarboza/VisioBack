@@ -12,13 +12,15 @@
 
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
-                <th>ID</th>
+                <th>Priority</th>
+                <th>Type</th>
                 <th>Message</th>
             </thead>
 
             <tbody>
                 <tr th:each="tempViolation : ${violations}">
-                    <td th:text="${tempViolation.violationType}" />
+                    <td th:text="1" class="text-center"/>
+                    <td th:text="${tempViolation.violationType}" class="text-center"/>
                     <td th:text="${tempViolation.developerMessage}" />
                 </tr>
             </tbody>
