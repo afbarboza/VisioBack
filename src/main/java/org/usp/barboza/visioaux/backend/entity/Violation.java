@@ -2,6 +2,8 @@ package org.usp.barboza.visioaux.backend.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "tb_violation")
 public class Violation {
@@ -25,13 +27,17 @@ public class Violation {
     @Column(name = "device_id")
     private String deviceId;
 
-    public Violation(int id, String violationType, String activityName, String conformanceLevel, String developerMessage, String deviceId) {
+    @Column(name = "number_occurrences")
+    private int numberOccurrences;
+
+    public Violation(int id, String violationType, String activityName, String conformanceLevel, String developerMessage, String deviceId, int numberOccurrences) {
         this.id = id;
         this.violationType = violationType;
         this.activityName = activityName;
         this.conformanceLevel = conformanceLevel;
         this.developerMessage = developerMessage;
         this.deviceId = deviceId;
+        this.numberOccurrences = numberOccurrences;
     }
 
     public Violation() {
@@ -83,5 +89,25 @@ public class Violation {
 
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
+    }
+
+    public int getNumberOccurrences() {
+        return numberOccurrences;
+    }
+
+    public void setNumberOccurrences(int numberOccurrences) {
+        this.numberOccurrences = numberOccurrences;
+    }
+
+    public boolean isEquivalentTo(Violation another) {
+        if (!Objects.equals(this.activityName, another.activityName)) {
+            return false;
+        } else if (!Objects.equals(this.violationType, another.violationType)) {
+            return false;
+        } else if (!Objects.equals(this.developerMessage, another.developerMessage)) {
+            return false;
+        }
+
+        return true;
     }
 }

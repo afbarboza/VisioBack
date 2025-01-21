@@ -7,9 +7,13 @@ import java.util.List;
 public interface ViolationService {
     List<Violation> findAll();
 
+    List<Violation> findViolationEquivalentTo(Violation violation);
+
     Violation findById(int id);
 
     Violation save(Violation violation);
 
     void deleteById(int id);
+
+    List<Violation> findAllByPriority();
 }

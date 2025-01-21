@@ -24,6 +24,16 @@ public class ViolationServiceImpl implements ViolationService {
     }
 
     @Override
+    public List<Violation> findViolationEquivalentTo(Violation violation) {
+        return violationRepository.findEquivalentViolationTo(
+                violation.getActivityName(),
+                violation.getViolationType(),
+                violation.getDeveloperMessage(),
+                violation.getDeviceId()
+        );
+    }
+
+    @Override
     public Violation findById(int id) {
         Violation violation;
         Optional<Violation> result = violationRepository.findById(id);
@@ -45,5 +55,13 @@ public class ViolationServiceImpl implements ViolationService {
     @Override
     public void deleteById(int id) {
         violationRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Violation> findAllByPriority() {
+        // TODO Step 3: Find all the violations
+        // TODO and sort them by priority
+
+        return List.of();
     }
 }

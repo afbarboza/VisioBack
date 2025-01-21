@@ -35,9 +35,17 @@ public class ViolationRestController {
 
     @PostMapping("/violation")
     public Violation addViolation(@RequestBody Violation violation) {
-        violation.setId(0);
-        Violation dbViolation = violationService.save(violation);
-        return dbViolation;
+        List<Violation> equivalentViolations = violationService.findViolationEquivalentTo(violation);
+        if (equivalentViolations != null && !equivalentViolations.isEmpty()) {
+            Violation equivalentViolation = equivalentViolations.getFirst();
+            int occurrences = equivalentViolation.getNumberOccurrences();
+            equivalentViolation.setNumberOccurrences(occurrences + 1);
+            return violationService.save(equivalentViolation);
+        } else {
+            violation.setId(0);
+            violation.setNumberOccurrences(1);
+            return violationService.save(violation);
+        }
     }
 
     @PutMapping("/violation")
