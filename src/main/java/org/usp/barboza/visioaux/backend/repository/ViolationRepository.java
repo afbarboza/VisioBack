@@ -11,7 +11,7 @@ public interface ViolationRepository extends JpaRepository<Violation, Integer> {
             value = "SELECT * FROM tb_violation WHERE activity_name = ?1 AND violation_type = ?2 AND developer_message = ?3 AND device_id = ?4",
             nativeQuery = true
     )
-    public List<Violation> findEquivalentViolationTo(
+    public List<Violation> findViolationIdenticalTo(
             String activityName,
             String violationType,
             String developerMessage,

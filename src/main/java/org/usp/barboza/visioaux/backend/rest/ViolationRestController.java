@@ -35,7 +35,7 @@ public class ViolationRestController {
 
     @PostMapping("/violation")
     public Violation addViolation(@RequestBody Violation violation) {
-        List<Violation> equivalentViolations = violationService.findViolationEquivalentTo(violation);
+        List<Violation> equivalentViolations = violationService.findViolationIdenticalTo(violation);
         if (equivalentViolations != null && !equivalentViolations.isEmpty()) {
             Violation equivalentViolation = equivalentViolations.getFirst();
             int occurrences = equivalentViolation.getNumberOccurrences();

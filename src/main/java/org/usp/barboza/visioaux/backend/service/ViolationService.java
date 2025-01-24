@@ -7,7 +7,7 @@ import java.util.List;
 public interface ViolationService {
     List<Violation> findAll();
 
-    List<Violation> findViolationEquivalentTo(Violation violation);
+    List<Violation> findViolationIdenticalTo(Violation violation);
 
     Violation findById(int id);
 

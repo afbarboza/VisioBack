@@ -21,7 +21,7 @@ public class ViolationController {
     @GetMapping("/list")
     public String listMessages(Model uiModel) {
         // get all messages from the db
-        List<Violation> violations = violationService.findAll();
+        List<Violation> violations = violationService.findAllByPriority();
 
         // add to the ui model
         uiModel.addAttribute("violations", violations);
