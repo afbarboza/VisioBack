@@ -19,9 +19,9 @@
 
             <tbody>
                 <tr th:each="tempViolation : ${violations}">
-                    <td th:text="1" class="text-center"/>
-                    <td th:text="${tempViolation.violationType}" class="text-center"/>
-                    <td th:text="${tempViolation.developerMessage}" />
+                    <td th:text="${tempViolation.priority}" class="text-center"/>
+                    <td th:text="${tempViolation.type}" class="text-center"/>
+                    <td th:text="${tempViolation.message}" />
                 </tr>
             </tbody>
         </table>
