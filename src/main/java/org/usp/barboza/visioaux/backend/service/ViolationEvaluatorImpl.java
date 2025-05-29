@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class uses the severity sigma to sort accessibility issues by severity.
+ */
 public class ViolationEvaluatorImpl implements ViolationEvaluator {
     @Override
     public List<UiViolationModel> sortByPriority(List<Violation> violations) {
