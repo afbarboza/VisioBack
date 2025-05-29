@@ -12,9 +12,10 @@
 
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
-                <th>Priority</th>
+                <th>Severity</th>
                 <th>Type</th>
                 <th>Message</th>
+                <th>Screen</th>
             </thead>
 
             <tbody>
@@ -22,6 +23,7 @@
                     <td th:text="${tempViolation.priority}" class="text-center"/>
                     <td th:text="${tempViolation.type}" class="text-center"/>
                     <td th:text="${tempViolation.message}" />
+                    <td th:text="${tempViolation.screenName}" />
                 </tr>
             </tbody>
         </table>
