@@ -8,7 +8,7 @@ import java.util.List;
 public interface ViolationService {
     List<Violation> findAll();
 
-    List<Violation> findViolationIdenticalTo(Violation violation);
+    List<Violation> findViolationIdenticalTo(Violation violation, String appId);
 
     Violation findById(int id);
 
@@ -16,5 +16,5 @@ public interface ViolationService {
 
     void deleteById(int id);
 
-    List<UiViolationModel> findAllByPriority();
+    List<UiViolationModel> findAllByPriority(String appId);
 }

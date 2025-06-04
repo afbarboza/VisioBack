@@ -3,6 +3,7 @@ package org.usp.barboza.visioaux.backend.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.usp.barboza.visioaux.backend.entity.UiViolationModel;
 import org.usp.barboza.visioaux.backend.service.ViolationService;
@@ -18,10 +19,10 @@ public class ViolationController {
         this.violationService = violationService;
     }
 
-    @GetMapping("/list")
-    public String listMessages(Model uiModel) {
+    @GetMapping("/list/{appId}")
+    public String listMessages(Model uiModel, @PathVariable String appId) {
         // get all messages from the db
-        List<UiViolationModel> violations = violationService.findAllByPriority();
+        List<UiViolationModel> violations = violationService.findAllByPriority(appId);
 
         // add to the ui model
         uiModel.addAttribute("violations", violations);

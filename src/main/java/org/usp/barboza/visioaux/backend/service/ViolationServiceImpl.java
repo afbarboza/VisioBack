@@ -30,8 +30,9 @@ public class ViolationServiceImpl implements ViolationService {
     }
 
     @Override
-    public List<Violation> findViolationIdenticalTo(Violation violation) {
+    public List<Violation> findViolationIdenticalTo(Violation violation, String appId) {
         return violationRepository.findViolationIdenticalTo(
+                appId,
                 violation.getActivityName(),
                 violation.getViolationType(),
                 violation.getDeveloperMessage(),
@@ -64,8 +65,8 @@ public class ViolationServiceImpl implements ViolationService {
     }
 
     @Override
-    public List<UiViolationModel> findAllByPriority() {
-        List<Violation> violations = violationRepository.findAll();
+    public List<UiViolationModel> findAllByPriority(String appId) {
+        List<Violation> violations = violationRepository.findAllByAppId(appId);
         List<UiViolationModel> violationsByPriority = eval.sortByPriority(violations);
         return violationsByPriority;
     }

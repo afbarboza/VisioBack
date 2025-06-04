@@ -8,13 +8,20 @@ import java.util.List;
 
 public interface ViolationRepository extends JpaRepository<Violation, Integer> {
     @Query(
-            value = "SELECT * FROM tb_violation WHERE activity_name = ?1 AND violation_type = ?2 AND developer_message = ?3 AND device_id = ?4",
+            value = "SELECT * FROM tb_violation WHERE app_package_id = ?1 AND activity_name = ?2 AND violation_type = ?3 AND developer_message = ?4 AND device_id = ?5",
             nativeQuery = true
     )
     public List<Violation> findViolationIdenticalTo(
+            String appId,
             String activityName,
             String violationType,
             String developerMessage,
             String deviceId
     );
+
+    @Query(
+            value = "SELECT * FROM tb_violation WHERE pp_package_id = ?1",
+            nativeQuery = true
+    )
+    public List<Violation> findAllByAppId(String appId);
 }
