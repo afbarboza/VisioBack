@@ -1,10 +1,13 @@
 CREATE DATABASE IF NOT EXISTS `visio_db`;
 USE `visio_db`;
 
+SELECT * FROM `tb_violation`;
+
 DROP TABLE IF EXISTS `tb_violation`;
 
 CREATE TABLE `tb_violation` (
 	`id` INT NOT NULL AUTO_INCREMENT,
+	`app_package_id` VARCHAR(500) DEFAULT NULL,
     `violation_type` VARCHAR(100) DEFAULT NULL,
     `activity_name` VARCHAR(100) DEFAULT NULL,
     `conformance_level` VARCHAR(100) DEFAULT NULL,

@@ -12,6 +12,9 @@ public class Violation {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "app_package_id")
+    private String appId;
+
     @Column(name = "violation_type")
     private String violationType;
 
@@ -99,15 +102,11 @@ public class Violation {
         this.numberOccurrences = numberOccurrences;
     }
 
-    public boolean isEquivalentTo(Violation another) {
-        if (!Objects.equals(this.activityName, another.activityName)) {
-            return false;
-        } else if (!Objects.equals(this.violationType, another.violationType)) {
-            return false;
-        } else if (!Objects.equals(this.developerMessage, another.developerMessage)) {
-            return false;
-        }
+    public String getAppId() {
+        return appId;
+    }
 
-        return true;
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 }

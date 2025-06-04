@@ -33,9 +33,9 @@ public class ViolationRestController {
         return violation;
     }
 
-    @PostMapping("/violation")
-    public Violation addViolation(@RequestBody Violation violation) {
-        List<Violation> equivalentViolations = violationService.findViolationIdenticalTo(violation);
+    @PostMapping("/violation/{appId}")
+    public Violation addViolation(@RequestBody Violation violation, @PathVariable String appId) {
+        List<Violation> equivalentViolations = violationService.findViolationIdenticalTo(violation, appId);
         if (equivalentViolations != null && !equivalentViolations.isEmpty()) {
             Violation equivalentViolation = equivalentViolations.getFirst();
             int occurrences = equivalentViolation.getNumberOccurrences();
@@ -43,6 +43,7 @@ public class ViolationRestController {
             return violationService.save(equivalentViolation);
         } else {
             violation.setId(0);
+            violation.setAppId(appId);
             violation.setNumberOccurrences(1);
             return violationService.save(violation);
         }
