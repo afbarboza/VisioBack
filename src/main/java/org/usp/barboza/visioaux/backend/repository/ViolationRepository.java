@@ -20,7 +20,7 @@ public interface ViolationRepository extends JpaRepository<Violation, Integer> {
     );
 
     @Query(
-            value = "SELECT * FROM tb_violation WHERE pp_package_id = ?1",
+            value = "SELECT * FROM tb_violation WHERE app_package_id = ?1",
             nativeQuery = true
     )
     public List<Violation> findAllByAppId(String appId);

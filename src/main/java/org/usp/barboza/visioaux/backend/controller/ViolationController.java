@@ -26,6 +26,7 @@ public class ViolationController {
 
         // add to the ui model
         uiModel.addAttribute("violations", violations);
+        uiModel.addAttribute("appName", "Violations found at " + appId);
 
         // redirect to the corresponding HTML Thymeleaf template
         return "violation-form";
